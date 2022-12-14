@@ -45,6 +45,23 @@ class LinkedList:
         node.next = self.head
         self.head = node
 
+
+    def removeKey(self, key):
+        current = self.head
+        previous = None
+        found = False
+
+        while current and not found:
+            if current.value == key and current == self.head:
+                self.head = self.head.next
+                found = True
+            elif current.value == key:
+                previous.next = current.next
+                found = True
+            else:
+                previous = current
+                current = current.next
+        
     
     def insert(self, index, value):
         """
@@ -175,4 +192,5 @@ numsList.append(4)
 numsList.append(5)
 numsList.remove(2)
 numsList.insert(2, 2.5)
+numsList.removeKey(2.5)
 print(numsList)
