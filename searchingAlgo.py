@@ -25,8 +25,7 @@ def recursive_binary_search(list, target):
         return False
 
     else:
-        last = len(list) - 1
-        mid = last // 2
+        mid = len(list) // 2
 
         if list[mid] == target: 
             return True
@@ -34,6 +33,7 @@ def recursive_binary_search(list, target):
             return recursive_binary_search(list[:mid], target)
         elif list[mid] < target: 
             return recursive_binary_search(list[mid + 1:], target)
+
 
 nums = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
