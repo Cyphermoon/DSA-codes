@@ -18,10 +18,15 @@ class LinkedList:
 
 
     def isEmpty(self):
+        #Checks is the list is empty
         return self.head is None
     
 
     def prepend(self, value):
+        """
+        Adds a node to the beginning of a list
+        """
+
         if(self.isEmpty()): 
             self.head = node
 
@@ -31,14 +36,35 @@ class LinkedList:
 
     
     def insert(self, index, value):
+        """
+        Add a node at a particular index
+        """
         node = Node(value)
+
+        if(self.isEmpty()):
+            self.head = node
+            return
+
         previousNode, currentNode = self.getPreviousAndCurrentNode(index)
 
         node.next = currentNode
         previousNode.next = node
 
+
     def remove(self, index):
-        pass
+        """
+        Removes a node at the specified index
+        """
+
+        if(self.isEmpty()):
+            self.head = None
+            return
+
+        previousNode, currentNode = self.getPreviousAndCurrentNode(index)
+        nextNode = currentNode.next
+
+        previousNode.next = nextNode
+        currentNode.next = None
 
 
     def getLastNode(self):
@@ -71,6 +97,7 @@ class LinkedList:
 
         return current
 
+
     def getPreviousAndCurrentNode(self, index):
         current = self.head
 
@@ -82,6 +109,9 @@ class LinkedList:
 
 
     def append(self, value):
+        """ 
+        Add a node to the end of a list
+        """
         node = Node(value)
 
         if(self.isEmpty()): 
@@ -113,4 +143,5 @@ numsList.append(3)
 numsList.append(4)
 numsList.append(5)
 numsList.insert(2, 2.5)
+numsList.remove(2)
 print(numsList)
