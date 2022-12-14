@@ -20,6 +20,17 @@ class LinkedList:
     def isEmpty(self):
         #Checks is the list is empty
         return self.head is None
+
+    
+    def size(self):
+        output = 0
+        current = self.head
+
+        while(current is not None):
+            output += 1
+            current = current.next
+        
+        return output
     
 
     def prepend(self, value):
@@ -61,6 +72,16 @@ class LinkedList:
             return
 
         previousNode, currentNode = self.getPreviousAndCurrentNode(index)
+
+        if((self.size() - 1) == index):
+            previousNode.next = None
+            return
+        
+        if(index == 0):
+            self.head = self.head.next
+            return
+    
+     
         nextNode = currentNode.next
 
         previousNode.next = nextNode
@@ -70,7 +91,7 @@ class LinkedList:
     def getLastNode(self):
         current = self.head
 
-        while(current is not None):
+        while current is not None:
 
             if(current.next is None):
                 return current
@@ -81,17 +102,27 @@ class LinkedList:
     def getNode(self, index):
         current = self.head
 
-        while(index > 0):
+        while index > 0:
             current = current.next
             index -= 1
 
         return current
+    
+    def search(self, key):
+        current = self.head
+
+        while current:
+            if(current.value == key):
+                return current
+            current = current.next
+        
+        return None
 
 
     def getPreviousNode(self, index):
         current = self.head
 
-        while(index > 1):
+        while index > 1:
             current = current.next
             index -= 1
 
@@ -123,18 +154,18 @@ class LinkedList:
 
     def __str__(self):
         current = self.head
-        output = ""
+        output = []
 
         while(current is not None):
             if current == self.head:
-                output += f"[head: {current.value}] -> "
+                output.append(f"[head: {current.value}]")
             elif current.next is None:
-                output += f"[tail: {current.value}]"
+                output.append(f"[tail: {current.value}]")
             else:
-                output += f"{current.value} -> "
+                output.append(f"{current.value}")
 
             current = current.next
-        return output
+        return " -> ".join(output)
 
 
 numsList = LinkedList(1)
@@ -142,6 +173,6 @@ numsList.append(2)
 numsList.append(3)
 numsList.append(4)
 numsList.append(5)
-numsList.insert(2, 2.5)
 numsList.remove(2)
+numsList.insert(2, 2.5)
 print(numsList)
