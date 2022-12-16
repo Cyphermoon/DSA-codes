@@ -1,6 +1,9 @@
 def merge_sort(nums):
     """
     Sorts a list using the merge sort algorithm
+
+    Time complexity: O(n log n)
+    Space complexity: O(n)
     """
     if len(nums) <= 1: 
         return nums
@@ -16,6 +19,8 @@ def merge_sort(nums):
 def split(items):
     """
     Splits the list into halves and return both half
+
+    Time complexity: O(log n)
     """
 
     mid = len(items) // 2
@@ -28,6 +33,8 @@ def split(items):
 def merge(left, right):
     """
     Accepts two lists and returns a new sorted list 
+
+    Time complexity: O(n logn)
     """
     output = []
     left_index = 0
