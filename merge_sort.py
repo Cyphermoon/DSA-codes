@@ -1,4 +1,7 @@
 def merge_sort(nums):
+    """
+    Sorts a list using the merge sort algorithm
+    """
     if len(nums) <= 1: 
         return nums
 
@@ -23,6 +26,9 @@ def split(items):
 
 
 def merge(left, right):
+    """
+    Accepts two lists and returns a new sorted list 
+    """
     output = []
     left_index = 0
     right_index = 0
@@ -56,4 +62,6 @@ def verify_sorted(items):
 
 
 nums = [73,92, 28, 7, 82, 2, 52]
-print(merge_sort(nums))
+merged_num = merge_sort(nums)
+print(verify_sorted(merged_num))
+
