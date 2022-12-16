@@ -15,7 +15,7 @@ def merge_sort(nums):
 
 def split(items):
     """
-    Return two half of the list
+    Splits the list into halves and return both half
     """
 
     mid = len(items) // 2
@@ -55,6 +55,9 @@ def merge(left, right):
 
 
 def verify_sorted(items):
+    """
+    This method verifies that the list is sorted
+    """
     if len(items) <= 1:
         return True
     
