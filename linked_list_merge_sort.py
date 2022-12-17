@@ -1,5 +1,9 @@
 from linkedList import LinkedList
 
+"""
+Todo: write a verify function for linked list
+"""
+
 
 def merge_sort(linkedList:LinkedList):
     """
@@ -7,6 +11,8 @@ def merge_sort(linkedList:LinkedList):
 
     -Recursively divide the linked list
     -sort each list back up
+
+    Time complexity: O(kn log n)
     """
 
     if linkedList.size() == 1:
@@ -25,6 +31,8 @@ def merge_sort(linkedList:LinkedList):
 def split(linkedList:LinkedList):
     """
     Splits a linked list from the middle into two sub-linked-list 
+
+    Time complexity: O(k log n)
     """
 
     if linkedList is None or linkedList.head is None:
@@ -50,9 +58,9 @@ def split(linkedList:LinkedList):
 def merge(left:LinkedList, right:LinkedList):
     """
     Sorts data from two list and return a new sorted linked list
+    Time complexity: O(n)
     """
     output = LinkedList(0)
-
     current = output.head
 
     left_head = left.head
@@ -60,11 +68,11 @@ def merge(left:LinkedList, right:LinkedList):
 
     while left_head or right_head:
         if left_head is None:
-            output.append(right_head.value)
+            current.next = right_head
              #call next on right to set loop condition to false
             right_head = right_head.next
         elif right_head is None:
-            output.append(left_head.value)
+            current.next = left_head
             #call next on the left to set loop condition to false
             left_head = left_head.next
         else:
@@ -73,14 +81,16 @@ def merge(left:LinkedList, right:LinkedList):
             right_data = right_head.value
             #if data on left is less than right data: add left to the end of the list
             if(left_data < right_data):
-                output.append(left_head.value)
+                current.next = left_head
                 #Move left head to next node
                 left_head = left_head.next
             #else add data on right to the end of a list
             else:
-                output.append(right_head.value)
+                current.next = right_head
                 #Move right head to next node
                 right_head = right_head.next
+        current = current.next
+
     #discard fake head
     output.head = output.head.next
     return output
@@ -91,6 +101,8 @@ numsList.append(7)
 numsList.append(5)
 numsList.append(2)
 numsList.append(8)
+numsList.append(5)
+print(numsList)
 mergedList = merge_sort(numsList)
 print(mergedList)
 
