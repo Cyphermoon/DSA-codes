@@ -8,12 +8,14 @@ class Node:
 
     def __init__(self, value):
         self.value = value
+    def __str__(self):
+        return f"This is node value is {self.value}"
 
 
 class LinkedList:
     head = None
 
-    def __init__(self, value):
+    def __init__(self, value=None):
         self.head = Node(value)
 
 
@@ -119,6 +121,9 @@ class LinkedList:
     def getNode(self, index):
         current = self.head
 
+        if index == 0:
+            return current
+
         while index > 0:
             current = current.next
             index -= 1
@@ -185,12 +190,15 @@ class LinkedList:
         return " -> ".join(output)
 
 
-numsList = LinkedList(1)
-numsList.append(2)
-numsList.append(3)
-numsList.append(4)
-numsList.append(5)
-numsList.remove(2)
-numsList.insert(2, 2.5)
-numsList.removeKey(2.5)
-print(numsList)
+
+if __name__ == "__main__":
+    numsList = LinkedList(1)
+    numsList.append(2)
+    numsList.append(3)
+    numsList.append(4)
+    numsList.append(5)
+    numsList.remove(2)
+    numsList.insert(2, 2.5)
+    numsList.removeKey(2.5)
+    print(numsList)
+
