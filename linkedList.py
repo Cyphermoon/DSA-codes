@@ -18,7 +18,7 @@ class LinkedList:
 
 
     def isEmpty(self):
-        #Checks is the list is empty
+        #Checks if the list is empty
         return self.head is None
 
     
