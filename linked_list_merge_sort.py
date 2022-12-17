@@ -52,6 +52,7 @@ def merge(left:LinkedList, right:LinkedList):
     Sorts data from two list and return a new sorted linked list
     """
     output = LinkedList(0)
+
     current = output.head
 
     left_head = left.head
@@ -59,11 +60,11 @@ def merge(left:LinkedList, right:LinkedList):
 
     while left_head or right_head:
         if left_head is None:
-            current.next = right_head
+            output.append(right_head.value)
              #call next on right to set loop condition to false
             right_head = right_head.next
         elif right_head is None:
-            current.next = left_head
+            output.append(left_head.value)
             #call next on the left to set loop condition to false
             left_head = left_head.next
         else:
@@ -72,25 +73,24 @@ def merge(left:LinkedList, right:LinkedList):
             right_data = right_head.value
             #if data on left is less than right data: add left to the end of the list
             if(left_data < right_data):
-                current.next = left_head
+                output.append(left_head.value)
                 #Move left head to next node
                 left_head = left_head.next
             #else add data on right to the end of a list
             else:
-                current.next = right_head
+                output.append(right_head.value)
                 #Move right head to next node
                 right_head = right_head.next
-        current = current.next
     #discard fake head
     output.head = output.head.next
     return output
 
 
 numsList = LinkedList(1)
-numsList.append(3)
+numsList.append(7)
+numsList.append(5)
 numsList.append(2)
-numsList.append(9)
-numsList.append(6)
+numsList.append(8)
 mergedList = merge_sort(numsList)
 print(mergedList)
 
