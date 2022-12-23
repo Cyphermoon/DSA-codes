@@ -5,6 +5,8 @@ def quick_sort(unsorted_list):
     - then group the element that are lesser than the pivot in the left var
     - it groups the element that are greater than the pivot in the right var
     - it then recursively do the same for the left and right variable
+
+    Time Complexity: O(n log n)
     """
 
     if len(unsorted_list) <= 1:
@@ -20,8 +22,8 @@ def splitAtPivot(list, pivot):
     left = []
     right = []
 
-    for i in range(len(list)):
-        if list[i] < pivot:
+    for i in range(1, len(list)):
+        if list[i] <= pivot:
             left.append(list[i])
         elif list[i] > pivot:
             right.append(list[i])

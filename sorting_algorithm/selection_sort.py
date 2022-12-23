@@ -9,8 +9,8 @@ def selection_sort(unsorted_list):
 
     while unsorted_list:
         min_index = find_min_index(unsorted_list)
-        sorted_list.append(unsorted_list[min_index])
-        unsorted_list.pop(min_index)
+        sorted_list.append(unsorted_list.pop(min_index))
+        
     return sorted_list
 
 
