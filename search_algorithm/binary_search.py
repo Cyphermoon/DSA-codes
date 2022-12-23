@@ -1,13 +1,14 @@
-# O(n)
-def linear_search(arr, val):
-    for i, item in enumerate(arr):
-        if item == val: return i
+"""
+- binary search takes the element at middle of the list 
+- if the mid element is greater than target value: ->
+- the value to the right are discarded
+- else: the value to the left are discarded
+- this condition keeps going until the first element <= last element
 
-    return -1
+Time Complexity: O(log n)
+"""
 
-
-def binary_search(arr, val):
-    
+def binary_search(arr, val):    
     first, last = 0, len(arr) -1
 
     while(first <= last):
@@ -35,8 +36,6 @@ def recursive_binary_search(list, target):
             return recursive_binary_search(list[mid + 1:], target)
 
 
-nums = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
-print("linear search: ", linear_search(nums, 6))
 print("binary search: ", binary_search(nums, 6))
 print("recursive binary search: ",recursive_binary_search(nums, 6))
