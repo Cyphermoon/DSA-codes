@@ -7,5 +7,5 @@ This repo contains everything I'm currently practicing on DSA
 - Selection Sort Algorithm
 - Binary Search Algorithm
 - Linear Search Algorithm
-- How to implement a LinkedList
+- How to Create a LinkedList
 - Merge Sort Implementation on LinkedList
