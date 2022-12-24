@@ -9,7 +9,7 @@ Time Complexity: O(log n)
 """
 
 def binary_search(arr, val):    
-    first, last = 0, len(arr) -1
+    first, last = 0, len(arr) - 1
 
     while(first <= last):
         mid = (first + last) // 2
@@ -18,7 +18,6 @@ def binary_search(arr, val):
         elif(arr[mid] > val): last = mid - 1
         elif(arr[mid] < val): first = mid + 1
 
-    
     return -1
 
 def recursive_binary_search(list, target):
@@ -36,6 +35,8 @@ def recursive_binary_search(list, target):
             return recursive_binary_search(list[mid + 1:], target)
 
 
+if __name__ == "__main__":
+    nums = [0, 1, 6, 8 ,9 ,1]
 
-print("binary search: ", binary_search(nums, 6))
-print("recursive binary search: ",recursive_binary_search(nums, 6))
+    print("binary search: ", binary_search(nums, 8))
+    print("recursive binary search: ",recursive_binary_search(nums, 6))
