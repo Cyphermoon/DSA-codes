@@ -31,6 +31,7 @@ def splitAtPivot(list, pivot):
     return left, right
 
 
-unsorted_list = [73,92, 28, 7, 82, 2, 52, 3, 5, 6, 2, 1, 9]
-sorted_list = quick_sort(unsorted_list)
-print(sorted_list)
+if __name__ == "__main__":
+    unsorted_list = [73,92, 28, 7, 82, 2, 52, 3, 5, 6, 2, 1, 9]
+    sorted_list = quick_sort(unsorted_list)
+    print(sorted_list)
