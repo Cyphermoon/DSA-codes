@@ -15,9 +15,7 @@ def merge_sort(linkedList:LinkedList):
     Time complexity: O(kn log n)
     """
 
-    if linkedList.size() == 1:
-        return linkedList
-    elif linkedList.head is None:
+    if linkedList.size() == 1 or linkedList.head is None:
         return linkedList
     
     l, r = split(linkedList)
@@ -94,6 +92,7 @@ def merge(left:LinkedList, right:LinkedList):
     #discard fake head
     output.head = output.head.next
     return output
+
 
 
 numsList = LinkedList(1)
