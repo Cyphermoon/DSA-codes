@@ -39,7 +39,6 @@ def merge(left, right):
     output = []
     left_index = 0
     right_index = 0
-    print("left:",left, "right:",right)
 
     while left_index < len(left) and right_index < len(right):
         if left[left_index] < right[right_index]:
@@ -57,7 +56,7 @@ def merge(left, right):
         output.append(left[left_index])
         left_index += 1
     
-    print("output: ", output)
+    
     return output
 
 
@@ -74,4 +73,6 @@ def verify_sorted(items):
 nums = [73,92, 28, 7, 82, 2, 52]
 merged_num = merge_sort(nums)
 print(verify_sorted(merged_num))
+
+
 
