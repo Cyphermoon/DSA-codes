@@ -1,4 +1,4 @@
-# DATA STRUCURES AND ALGORITHMS CODEs
+# Data Structures and Algorithms
 This repo contains everything I'm currently practicing on DSA
 
 ## What i have Learnt so far
