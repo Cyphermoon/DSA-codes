@@ -18,3 +18,7 @@ You can also run the `search_algorithm/search_names.py` file to see how binary s
 ## Learning Resource
 - [freeCodeCamp youtube tutorial](https://www.youtube.com/watch?v=8hly31xKli0)
 - [Mosh Hamedani youtube tutorial](https://www.youtube.com/watch?v=BBpAmxU_NQo)
+
+## Technologies Used
+- Python 
+- Java
