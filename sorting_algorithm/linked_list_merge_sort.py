@@ -94,6 +94,19 @@ def merge(left:LinkedList, right:LinkedList):
     return output
 
 
+def verify_sorted(linkedList: LinkedList):
+    current = linkedList.head
+
+    while current.next is not None:
+        #return false if the current element is greater than the next element
+        if current.value > current.next.value:
+            return False
+
+        current = current.next
+
+    return True
+
+
 
 numsList = LinkedList(1)
 numsList.append(7)
@@ -101,7 +114,8 @@ numsList.append(5)
 numsList.append(2)
 numsList.append(8)
 numsList.append(5)
-print(numsList)
+print(f"Unsorted list: {numsList}")
 mergedList = merge_sort(numsList)
-print(mergedList)
+print(f"Sorted List: {mergedList}")
+print(f"isSorted: {verify_sorted(mergedList)}")
 
