@@ -8,17 +8,40 @@
 Time Complexity: O(log n)
 """
 
+def positionToMove(array, testValueIndex, target):
+    """
+    This function tells the binary search which position to move 
+    """
+    testValue = array[testValueIndex]
+
+    if testValue == target:
+        # move back if the previous element is the same as the current
+        if array[testValueIndex - 1] and array[testValueIndex - 1] == testValue:
+            return "left"
+
+        return "found"
+
+    # move back if the testValue is greater than target
+    if testValue > target:
+        return "left"
+
+    else: 
+        return "right"
+
+
 def binary_search(arr, val):    
     first, last = 0, len(arr) - 1
 
     while(first <= last):
         mid = (first + last) // 2
+        result = positionToMove(arr, mid, val)
 
-        if arr[mid] == val: return mid
-        elif(arr[mid] > val): last = mid - 1
-        elif(arr[mid] < val): first = mid + 1
+        if result == "found": return mid
+        elif(result == "left"): last = mid - 1
+        elif(result == "right"): first = mid + 1
 
     return -1
+
 
 def recursive_binary_search(list, target):
     if len(list) == 0:
@@ -36,7 +59,7 @@ def recursive_binary_search(list, target):
 
 
 if __name__ == "__main__":
-    nums = [0, 1, 6, 8 ,9 ,1]
+    nums = [0, 1, 6, 6, 6, 6, 6, 6, 8 ,9 ,1]
 
     print("binary search: ", binary_search(nums, 8))
-    print("recursive binary search: ",recursive_binary_search(nums, 6))
+
