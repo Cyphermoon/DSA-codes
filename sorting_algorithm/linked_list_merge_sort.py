@@ -1,9 +1,5 @@
 from linkedList import LinkedList
 
-"""
-Todo: write a verify function for linked list
-"""
-
 
 def merge_sort(linkedList:LinkedList):
     """
@@ -18,7 +14,7 @@ def merge_sort(linkedList:LinkedList):
     if linkedList.size() == 1 or linkedList.head is None:
         return linkedList
     
-    l, r = split(linkedList)
+    l, r = split(linkedList) 
 
     left = merge_sort(l)
     right = merge_sort(r)
@@ -33,25 +29,19 @@ def split(linkedList:LinkedList):
     Time complexity: O(k log n)
     """
 
-    if linkedList is None or linkedList.head is None:
+    if linkedList is None or linkedList.isEmpty():
         left = linkedList
         right = None
-
         return left, right
-    
     else:
-        size = linkedList.size()
-        mid = size // 2
-
-        mid_node = linkedList.getNode(mid - 1)
+        mid = linkedList.size() // 2
+        mid_node = linkedList.getPreviousNode(mid)
 
         left = linkedList
         right = LinkedList()
         right.head = mid_node.next
-        mid_node.next = None 
-
+        mid_node.next = None
         return left, right
-
 
 def merge(left:LinkedList, right:LinkedList):
     """
