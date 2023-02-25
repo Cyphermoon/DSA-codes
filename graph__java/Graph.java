@@ -45,6 +45,10 @@ public class Graph {
         }
     }
 
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
+    }
+
     public void removeEdge(Vertex startVertex, Vertex endVertex) {
         startVertex.removeEdge(endVertex);
 
@@ -68,8 +72,10 @@ public class Graph {
 
         for (int i = 0; i < this.vertices.size(); i++) {
             Vertex v = this.vertices.get(i);
+            // wrap each vertex and it's connection in a bracket
             graph_rep += "(" + v.print(isWeighted) + ")";
 
+            // append an arrow until the second to last element
             if (i < this.vertices.size() - 1) {
                 graph_rep += " --> ";
             }
