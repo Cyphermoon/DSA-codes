@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * data - represent the value it stores
  * edges - represent a list of neighbors
  */
-public class Vertex implements Comparable<Vertex> {
+public class Vertex {
     private String data;
 
     private ArrayList<Edge> edges;
@@ -68,9 +68,7 @@ public class Vertex implements Comparable<Vertex> {
     }
 
     @Override
-    public int compareTo(Vertex o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
+    public String toString() {
+        return this.data;
     }
-
 }

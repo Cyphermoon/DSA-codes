@@ -25,18 +25,18 @@ public class GraphTraversal {
     }
 
     public static void breadthFirstSearch(Vertex startVertex, ArrayList<Vertex> visited) {
-        Queue<Vertex> queue = new LinkedList<Vertex>();
-        queue.add(startVertex);
+        LinkedList<Vertex> queue = new LinkedList<Vertex>();
+        queue.addLast(startVertex);
 
         while (!queue.isEmpty()) {
-            Vertex currentVertex = queue.remove();
+            Vertex currentVertex = queue.removeFirst();
 
             if (!visited.contains(currentVertex)) {
                 System.out.println(currentVertex.getData());
                 visited.add(currentVertex);
 
                 for (Edge e : currentVertex.getEdges()) {
-                    queue.add(e.getEndVertex());
+                    queue.addLast(e.getEndVertex());
                 }
 
             }
@@ -48,9 +48,9 @@ public class GraphTraversal {
         TestGraph testGraph = new TestGraph();
         Vertex startVertex = testGraph.getStartingVertex();
 
-        ArrayList<Vertex> dfsVisited = new ArrayList<>();
-        System.out.println("----DFS-----");
-        depthFirstSearch(startVertex, dfsVisited);
+        // ArrayList<Vertex> dfsVisited = new ArrayList<>();
+        // System.out.println("----DFS-----");
+        // depthFirstSearch(startVertex, dfsVisited);
 
         System.out.println("\n----BFS-----");
         ArrayList<Vertex> bfsVisited = new ArrayList<>();
