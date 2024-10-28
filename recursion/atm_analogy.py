@@ -1,8 +1,8 @@
 def get_position_in_queue(person):
-    if(person.next_in_queue == None):
+    if person.next_in_queue == None:
         return 1
     
-    return 1 + get_position_in_queue(person.next_in_queue)
+    return get_position_in_queue(person.next_in_queue) + 1
 
 
 class Person:

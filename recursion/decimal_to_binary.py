@@ -1,11 +1,14 @@
+from math import remainder
+
+
 def convert_decimal_to_binary(input):
     if input <= 1:
         return input
     
     quotient = input // 2
-    remainder = str(input % 2)
+    remainder = input % 2
 
-    return str(convert_decimal_to_binary(quotient)) + remainder
+    return str(convert_decimal_to_binary(quotient)) + str(remainder)
 
 
 def convert_decimal_to_binary(input, result=""):
@@ -16,4 +19,4 @@ def convert_decimal_to_binary(input, result=""):
     return convert_decimal_to_binary(input // 2, result)
 
 
-print("Binary: ", convert_decimal_to_binary(3))
+print("Binary: ", convert_decimal_to_binary(4))
