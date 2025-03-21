@@ -6,40 +6,38 @@
 */
 
 
-function bubbleSort(arr, comparator) {
-    if (arr.length == 0) return []
 
-    if (comparator === undefined) {
-        comparator = (a, b) => {
-            return a - b
-        }
+function bubbleSort(arr, comparator) {
+    if (arr.length <= 1) return arr
+
+    if (typeof comparator !== "function") {
+        comparator = (a, b) => a - b
     }
 
-    let isSorted;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let isSwapped = false
 
-    for (let i = arr.length; i >= 0; i--) {
-        isSorted = false
-
-        for (let j = 0; j < i - 1; j++) {
+        for (let j = 0; j <= i - 1; j++) {
             let comparatorSignal = comparator(arr[j], arr[j + 1])
+
             if (comparatorSignal > 0) {
-                isSorted = true
                 swap(arr, j, j + 1)
+                isSwapped = true
             }
         }
 
-        if (!isSorted) break
+        if (!isSwapped) break
     }
 
     return arr
 }
+
 
 function swap(arr, idx1, idx2) {
     [arr[idx2], arr[idx1]] = [arr[idx1], arr[idx2]]
 }
 
 const randomNum = [5, 3, 1, 4, 2]
-bubbleSort(randomNum)
 
-console.log("Bubble Sort Random Number:", randomNum)
+console.log("Bubble Sort Random Number:", bubbleSort(randomNum))
 
