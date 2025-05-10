@@ -88,6 +88,42 @@ class DoublyLinkedList {
         this.length++
         return this
     }
+
+    get(idx) {
+        if (idx < 0 || idx >= this.length) return null
+
+
+        let mid = Math.floor(this.length / 2)
+        const isLeftPart = idx < mid
+
+        if (isLeftPart) {
+            let idxCounter = 0
+            let current = this.head
+
+            while (current) {
+                if (idx === idxCounter) {
+                    return current
+                }
+
+                current = current.next
+                idxCounter++
+            }
+        } else {
+            let idxCounter = this.length - 1
+            let current = this.tail
+
+            while (current) {
+                if (idx === idxCounter) {
+                    return current
+                }
+
+                current = current.prev
+                idxCounter--
+            }
+        }
+
+        return null
+    }
 }
 
 
@@ -96,3 +132,5 @@ const dll = new DoublyLinkedList()
 dll.push(10)
 dll.push(20)
 dll.push(30)
+
+console.log("Get Method:", dll.get(0).val)
