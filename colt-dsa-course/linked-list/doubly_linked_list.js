@@ -144,8 +144,8 @@ class DoublyLinkedList {
         prev.next.prev = newNode
         prev.next = newNode
         newNode.prev = prev
-        this.length++
 
+        this.length++
         return true
     }
 
