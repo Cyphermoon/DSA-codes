@@ -31,16 +31,16 @@ class Stack {
             const newNode = new Node(val)
             this.first = newNode
             this.last = newNode
-            this.size++
 
-            return newNode
+            return ++this.size
         }
 
         const newNode = new Node(val)
-
         newNode.next = this.first
         this.first = newNode
 
+
+        return ++this.size
     }
 
     pop() {
@@ -48,7 +48,9 @@ class Stack {
 
         const removedNode = this.first
         this.first = removedNode.next
+
         removedNode.next = null
+        this.size--
 
         return removedNode
     }
