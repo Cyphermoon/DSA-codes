@@ -95,4 +95,150 @@ class BinarySearchTree {
             }
         }
     }
+
+    breadthFirstSearch() {
+        //* Thought process
+        // we have a visited array that stores the visited node
+        // we should also have another "queue" array we can use to process nodes
+        // start the "queue" with the root node
+        // in the main execution, we can get the dequeued node, add that to the visited
+        // if visited node has either left or right, add it to the queue for processing
+        // return the visited list at the end
+
+        const visited = []
+        const queue = []
+
+        let currentNode;
+        queue.push(this.root)
+
+        while (queue.length) {
+            currentNode = queue.shift()
+            visited.push(currentNode.value)
+            if (currentNode.left) queue.push(currentNode.left)
+            if (currentNode.right) queue.push(currentNode.right)
+        }
+
+        return visited
+    }
+
+    breadFirstSearchRecursive() {
+        //* Thought process
+        // we can make this function a wrapper function that calls the recursive function
+        // let's start be defining the required variables e.g visited and queue and pass it to the recursive function 
+        //------------------------//
+        //    recursive function - thought process
+        //      return visited if the queue is empty
+        //      unit of work in recursion if to process an item in a queue and update the queue with it's children
+
+        const visited = []
+        const queue = []
+        let currentNode;
+
+        queue.push(this.root)
+
+        const processQueue = (queue, visited) => {
+            if (!queue.length) return visited
+
+            currentNode = queue.shift()
+            visited.push(currentNode.value)
+            if (currentNode.left) queue.push(currentNode.left)
+            if (currentNode.right) queue.push(currentNode.right)
+
+            return processQueue(queue, visited)
+        }
+
+        const res = processQueue(queue, visited)
+        return res
+
+    }
+
+    depthFirstSearchPreOrder() {
+        //* Thought process
+        // have a visited array
+        // a recursive function that traverse the tree
+
+
+        const visited = []
+        const currentNode = this.root
+
+        const processNode = (currentNode) => {
+            if (!currentNode) return null
+
+            visited.push(currentNode.value)
+
+            if (currentNode.left) processNode(currentNode.left)
+            if (currentNode.right) processNode(currentNode.right)
+        }
+
+        processNode(currentNode)
+
+        return visited
+    }
+
+    depthFirstSearchInOrder() {
+        //* Thought Process
+        // I've got this
+
+        const visited = []
+        const currentNode = this.root
+
+        const processNode = (currentNode) => {
+            if (!currentNode) return null
+
+            if (currentNode.left) processNode(currentNode.left)
+            visited.push(currentNode.value)
+            if (currentNode.right) processNode(currentNode.right)
+        }
+
+        processNode(currentNode)
+
+        return visited
+    }
+
+    depthFirstSearchPostOrder() {
+        //* Thought process
+        // Practicing typing speed
+
+        const visited = []
+        const currentNode = this.root
+
+        const processNode = (currentNode) => {
+            if (!currentNode) return null
+
+            if (currentNode.left) processNode(currentNode.left)
+            if (currentNode.right) processNode(currentNode.right)
+            visited.push(currentNode.value)
+        }
+
+        processNode(currentNode)
+        return visited
+    }
 }
+
+
+// Create a new binary search tree
+const tree = new BinarySearchTree();
+
+// Insert values to populate the tree
+tree.insert(10);      // Root
+tree.insert(6);       // Left of 10
+tree.insert(15);      // Right of 10
+tree.insert(3);       // Left of 6
+tree.insert(8);       // Right of 6
+tree.insert(20);      // Right of 15
+
+// This creates a tree that looks like:
+//       10
+//      /  \
+//     6    15
+//    / \     \
+//   3   8    20
+
+// You can verify the structure
+console.log(tree);
+
+console.log("Breadth First Search Recursive:", tree.breadFirstSearchRecursive())
+console.log("Depth First Search (PreOrder):", tree.depthFirstSearchPreOrder())
+console.log("Depth First Search (In Order):", tree.depthFirstSearchInOrder())
+console.log("Depth First Search (Post Order):", tree.depthFirstSearchPostOrder())
+
