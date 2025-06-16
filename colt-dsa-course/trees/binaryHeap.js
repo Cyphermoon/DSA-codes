@@ -11,8 +11,6 @@ class MaxBinaryHeap {
             3. iteratively or recursively compare compare with the parent element until it's at the top. Note: update the calculated parentIdx after each positive comparison
          */
 
-        if (this.values.length === 0) return null
-
         this.values.push(val)
         if (this.values.length <= 1) return null
 
@@ -77,3 +75,60 @@ class MaxBinaryHeap {
 }
 
 //TODO: Test out the extractMax function with actual values and stop through the implementation
+
+// ========== MaxBinaryHeap Tests ==========
+console.log("========== MaxBinaryHeap Tests ==========");
+
+// Create a new binary heap
+const maxHeap = new MaxBinaryHeap();
+
+// Test the insertion
+console.log("Adding numbers to the heap:");
+maxHeap.insert(41);
+maxHeap.insert(39);
+maxHeap.insert(33);
+maxHeap.insert(18);
+maxHeap.insert(27);
+maxHeap.insert(12);
+console.log("After insertion:", maxHeap.values); // Should maintain heap property
+
+// Add a larger value that should bubble up
+console.log("\nInserting 55 (should bubble to the top):");
+maxHeap.insert(55);
+console.log("After inserting 55:", maxHeap.values);
+
+// Extract the maximum value
+console.log("\nExtracting max value:");
+console.log("Maximum value removed:", maxHeap.extractMax()); // Should be 55
+console.log("Heap after extraction:", maxHeap.values); // Should maintain heap property
+
+// Extract another maximum
+console.log("\nExtracting another max value:");
+console.log("Maximum value removed:", maxHeap.extractMax()); // Should be 41
+console.log("Heap after extraction:", maxHeap.values);
+
+// Insert more values
+console.log("\nAdding more values:");
+maxHeap.insert(100);
+maxHeap.insert(22);
+console.log("Heap after adding more values:", maxHeap.values);
+
+// Extract all values to see if they come out in order
+console.log("\nExtracting all values (should be in descending order):");
+const extractedValues = [];
+while (maxHeap.values.length > 0) {
+    extractedValues.push(maxHeap.extractMax());
+}
+console.log("Values in extraction order:", extractedValues);
+
+// Test edge case - empty heap
+console.log("\nCreating new empty heap:");
+const emptyHeap = new MaxBinaryHeap();
+console.log("Extracting from empty heap:", emptyHeap.extractMax());
+
+// Test rebuilding heap after removing everything
+console.log("\nRebuilding heap after emptying it:");
+maxHeap.insert(42);
+maxHeap.insert(29);
+maxHeap.insert(18);
+console.log("Rebuilt heap:", maxHeap.values);
